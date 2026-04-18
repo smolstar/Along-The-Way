@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpx2crwfynslt"]
+
+[ext_resource type="Texture2D" uid="uid://bhsnxsqehaqx0" path="res://sprites/CHARACTERS/farmer.npc (1).png" id="1_qhdx4"]
+[ext_resource type="Script" path="res://SCENES/farmer.gd" id="1_tat3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1jw5"]
+atlas = ExtResource("1_qhdx4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56kgd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1jw5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_375as"]
+size = Vector2(14, 20)
+
+[node name="farmer" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_tat3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 28
+position = Vector2(-3, 7)
+scale = Vector2(0.8125, 0.5625)
+sprite_frames = SubResource("SpriteFrames_56kgd")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 6)
+shape = SubResource("RectangleShape2D_375as")

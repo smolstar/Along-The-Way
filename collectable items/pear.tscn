@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc03plhvs4o5c"]
+
+[ext_resource type="Texture2D" uid="uid://cec4j0u4te5o4" path="res://sprites/OBJECTS/fruit.png" id="1_k6xmw"]
+[ext_resource type="Script" path="res://collectable items/pear.gd" id="2_uqul8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrcli"]
+atlas = ExtResource("1_k6xmw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dy13u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrcli")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gb3i8"]
+radius = 7.0
+
+[node name="pear" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dy13u")
+script = ExtResource("2_uqul8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gb3i8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

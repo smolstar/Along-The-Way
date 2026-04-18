@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx32wt7518xcj"]
+
+[ext_resource type="Script" path="res://Main Menu/setting_menu.gd" id="1_0i1yp"]
+[ext_resource type="FontFile" uid="uid://dj4fcnyxhwt1o" path="res://FONT/PeaberryMono.ttf" id="1_y5hmr"]
+[ext_resource type="PackedScene" uid="uid://cgikcumbp4m21" path="res://Main Menu/setting_tab_container.tscn" id="3_vbkbu"]
+
+[node name="Setting_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0i1yp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.982343, 0.982342, 0.982342, 1)
+theme_override_fonts/font = ExtResource("1_y5hmr")
+theme_override_font_sizes/font_size = 50
+text = "SETTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Setting_Tab_Container" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_vbkbu")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="exit_button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_y5hmr")
+theme_override_font_sizes/font_size = 45
+text = "EXIT"
+
+[connection signal="exit_setting_menu" from="." to="." method="_on_exit_setting_menu"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]

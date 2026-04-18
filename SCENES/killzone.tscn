@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7jgvch3557d"]
+
+[ext_resource type="Script" path="res://scripts/killzone.gd" id="1_n5gil"]
+[ext_resource type="AudioStream" uid="uid://dvbhn33flmkvf" path="res://sfx/fail-234710.mp3" id="2_upeqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfex3"]
+size = Vector2(312, 21)
+
+[node name="killzone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_n5gil")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(276, 1.5)
+shape = SubResource("RectangleShape2D_xfex3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_upeqs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

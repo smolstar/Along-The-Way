@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://digkldyuyi66"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ilh8h"]
+[ext_resource type="Texture2D" uid="uid://uemsvahhnsjf" path="res://sprites/CHARACTERS/player.png" id="2_opk7q"]
+[ext_resource type="Texture2D" uid="uid://d35icr3myyv2y" path="res://life dummy(anis can change)/hp heart.png" id="3_1hajd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0y2i"]
+atlas = ExtResource("2_opk7q")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_653n4"]
+atlas = ExtResource("2_opk7q")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05lsa"]
+atlas = ExtResource("2_opk7q")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57bll"]
+atlas = ExtResource("2_opk7q")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l86be"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0y2i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_653n4")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05lsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57bll")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gjur"]
+radius = 5.38516
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mihyi"]
+radius = 8.0
+height = 22.0
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
+z_index = 5
+collision_layer = 2
+script = ExtResource("1_ilh8h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -2)
+zoom = Vector2(4, 4)
+limit_right = 834
+limit_bottom = 60
+limit_smoothed = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.5, -9.5)
+scale = Vector2(0.8125, 1.1875)
+sprite_frames = SubResource("SpriteFrames_l86be")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_2gjur")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -11)
+shape = SubResource("CapsuleShape2D_mihyi")
+
+[node name="health_bar" type="CanvasLayer" parent="."]
+
+[node name="Hbox" type="HBoxContainer" parent="health_bar"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -163.0
+offset_right = 242.0
+offset_bottom = 128.0
+grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
+
+[node name="heart" type="TextureRect" parent="health_bar/Hbox"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("3_1hajd")
+
+[node name="heart2" type="TextureRect" parent="health_bar/Hbox"]
+layout_mode = 2
+texture = ExtResource("3_1hajd")
+
+[node name="heart3" type="TextureRect" parent="health_bar/Hbox"]
+layout_mode = 2
+texture = ExtResource("3_1hajd")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bljxa578miega"]
+
+[ext_resource type="Script" path="res://SCENES/girl.gd" id="1_g5d80"]
+[ext_resource type="Texture2D" uid="uid://c1a0anedh2xna" path="res://sprites/CHARACTERS/npc.png" id="1_v3dxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3sqb"]
+atlas = ExtResource("1_v3dxp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5tve"]
+atlas = ExtResource("1_v3dxp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uy04n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3sqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5tve")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khqom"]
+radius = 5.09902
+
+[node name="girl" type="CharacterBody2D"]
+script = ExtResource("1_g5d80")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uy04n")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_khqom")

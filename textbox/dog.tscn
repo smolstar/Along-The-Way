@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5f67wmlkmpo0"]
+
+[ext_resource type="Script" path="res://dog.gd" id="1_3mn75"]
+[ext_resource type="Texture2D" uid="uid://hb3hdcqq7h8r" path="res://sprites/OBJECTS/Mobile - Octopath Traveler Champions of the Continent - Dogs (2).png" id="2_hc60r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiqly"]
+atlas = ExtResource("2_hc60r")
+region = Rect2(500, 0, 500, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbohw"]
+atlas = ExtResource("2_hc60r")
+region = Rect2(0, 350, 500, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_opsf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiqly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbohw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qlpq"]
+size = Vector2(33, 21)
+
+[node name="Dog" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_3mn75")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-228.5, -46)
+scale = Vector2(0.086, 0.0914286)
+sprite_frames = SubResource("SpriteFrames_opsf2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.245204
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-228.5, -46.5)
+shape = SubResource("RectangleShape2D_2qlpq")

@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=3 uid="uid://mh7wfxnfd581"]
+
+[ext_resource type="Script" path="res://Main Menu/tutorial.gd" id="1_uycfd"]
+[ext_resource type="Texture2D" uid="uid://681xyp7hrak4" path="res://sprites/OBJECTS/Screenshot 2024-12-07 162557.png" id="2_s752j"]
+[ext_resource type="FontFile" uid="uid://dj4fcnyxhwt1o" path="res://FONT/PeaberryMono.ttf" id="3_xb7qr"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uycfd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s752j")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.08691, 1)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="separator" type="Control" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="tutorial" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 50
+text = "Tutorial
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial2" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 35
+text = "Press W to jump
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial3" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 35
+text = "Press A to move left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial4" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 35
+text = "Press D to move right
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial5" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 35
+text = "Press Enter to interact 
+with items and NPC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial6" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 35
+text = "Press Tab to pause
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial7" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 20
+text = "Player movement key can be changed in setting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial8" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xb7qr")
+theme_override_font_sizes/font_size = 20
+text = "Press Tab to start playing"
+horizontal_alignment = 1
+vertical_alignment = 1

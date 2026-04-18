@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7mwpky7l4ow4"]
+
+[ext_resource type="Texture2D" uid="uid://cmcyavts1640q" path="res://sprites/OBJECTS/apple.png" id="1_rporc"]
+[ext_resource type="Script" path="res://collectable items/apple.gd" id="2_1dqpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxfpr"]
+atlas = ExtResource("1_rporc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q7oy"]
+atlas = ExtResource("1_rporc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_108xb"]
+atlas = ExtResource("1_rporc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0fqd"]
+atlas = ExtResource("1_rporc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckdc0"]
+atlas = ExtResource("1_rporc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rwrb"]
+atlas = ExtResource("1_rporc")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe2ap"]
+atlas = ExtResource("1_rporc")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pbnp"]
+atlas = ExtResource("1_rporc")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfapq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxfpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q7oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_108xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0fqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckdc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rwrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe2ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pbnp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8dm8s"]
+radius = 3.34179
+
+[node name="apple" type="AnimatedSprite2D"]
+visibility_layer = 2
+position = Vector2(-9.67769, -5.02971)
+scale = Vector2(0.226451, 0.256048)
+sprite_frames = SubResource("SpriteFrames_tfapq")
+autoplay = "default"
+frame_progress = 0.178784
+script = ExtResource("2_1dqpj")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(-1.74735, 0.377022)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.22824, 1.64959)
+shape = SubResource("CapsuleShape2D_8dm8s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

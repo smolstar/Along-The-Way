@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bufba7jk85avn"]
+
+[ext_resource type="Texture2D" uid="uid://dl6fxfnci6y8h" path="res://change scene/vecteezy_blue-fire-fx-for-game-png-design_9375100.png" id="1_sbvji"]
+[ext_resource type="Script" path="res://change scene/next_level.gd" id="2_bfdcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5if5n"]
+atlas = ExtResource("1_sbvji")
+region = Rect2(0, 0, 3840, 2160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_160o8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5if5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yvc8y"]
+radius = 617.698
+height = 1235.4
+
+[node name="NextLevel" type="AnimatedSprite2D"]
+position = Vector2(-80.5, -92.5)
+scale = Vector2(0.00598959, 0.0152778)
+sprite_frames = SubResource("SpriteFrames_160o8")
+script = ExtResource("2_bfdcs")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-56.466, 165.305)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_yvc8y")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
