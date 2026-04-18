@@ -1,0 +1,13 @@
+~ Dog
+
+I found you!
+Where did you go? 
+I've been looking for you everywhere.
+Luca: Woof! Woof!
+Bet you're tired huh.
+Let's go home now pal.
+
+
+
+set global.go_to_scene("res://textbox/Finished.tscn")
+=> END

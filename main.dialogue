@@ -1,0 +1,26 @@
+~ main
+
+# Check if the player has met the farmer before
+if global.farmer_met == false:
+	Farmer: [[Hi|Hello]]...how may I help you?
+    Hi.. have you seen a dog pass by?
+        Farmer: Oh I can't see too well these days... it probably went through that portal.
+        - Thank you so much!
+            Farmer: Oh! During your search... can you help me find stuff for my compost bin? 
+Farmer: You can hand them over to my twin brother on the other side.  
+            
+                - Sure! Have a good day sir. => END
+                - Is there anything spesific i need to pick up?
+                    Farmer: Oh! no, you just need to collect items such as fruits and avoid items such as plastic since it can't decompose.
+                    - Alrighty then.
+                        Farmer: Goodluck young one.
+                        # Mark that the player has met the farmer
+                        set global.farmer_met == true
+                        => END
+                    - Goodbye. => END
+    - Goodbye. => END
+else:
+	Farmer: [[Hello|Hi]], Go on. You haven't finished yet.  # If the player has already helped, show this.
+	=> END
+
+=> END

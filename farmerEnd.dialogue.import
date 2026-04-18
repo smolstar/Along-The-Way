@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://we0t4utntpdg"
+path="res://.godot/imported/farmerEnd.dialogue-2c2c604a5dc29f0321ba3eb497362138.tres"
+
+[deps]
+
+source_file="res://farmerEnd.dialogue"
+dest_files=["res://.godot/imported/farmerEnd.dialogue-2c2c604a5dc29f0321ba3eb497362138.tres"]
+
+[params]
+
+defaults=true

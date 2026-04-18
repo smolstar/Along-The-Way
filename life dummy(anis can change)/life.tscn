@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlpj2gir7g0we"]
+
+[ext_resource type="Texture2D" uid="uid://d35icr3myyv2y" path="res://life dummy(anis can change)/hp heart.png" id="1_6vpg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o605u"]
+atlas = ExtResource("1_6vpg5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2d8g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o605u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Life" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2d8g1")
